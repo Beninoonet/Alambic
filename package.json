@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@sapphire/framework": "^4.2.0",
+    "discord-giveaway": "^1.1.5",
     "discord.js": "14.x",
     "dotenv": "^16.0.3",
     "ms": "^2.1.3",

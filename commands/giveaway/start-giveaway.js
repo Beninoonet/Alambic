@@ -1,6 +1,3 @@
-const ms = require('ms')
-
-
 const { Command } = require('@sapphire/framework');
 const { CommandInteraction } = require('discord.js');
 class StartGACommand extends Command {
@@ -36,21 +33,20 @@ class StartGACommand extends Command {
   /**
    * 
    * @param {CommandInteraction} interaction 
+
    */
   async chatInputRun(interaction, client) {
         const duration = interaction.options.getString('duration');
         const winnerCount = interaction.options.getInteger('winners');
         const prize = interaction.options.getString('prize');
-
-        client.giveawaysManager
-        .start(interaction.channel, {
-            duration: ms(duration),
-            winnerCount,
-            prize
+        await client.giveaways.startGiveaway({
+          prize: 'Discord Nitro Classic',
+            channelId: interaction.channel.id,
+            guildId: interaction.guild.id,
+            duration: 30000, // 30 Seconds
+            winners: 1, // 1 winner
+            hostedBy: interaction.user.id
         })
-        .then((data) => {
-            console.log(data); // {...} (messageId, end date and more)
-        });
   }
 
 }
